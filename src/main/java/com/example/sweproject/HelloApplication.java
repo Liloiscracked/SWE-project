@@ -30,40 +30,40 @@ public class HelloApplication extends Application {
         gridpane.setPadding(new Insets(25, 25, 25, 25));
         Scene scene1 = new Scene(gridpane, 400, 250);
 
-            // Set up the login form
-            titleLabel = new Label("Login Page");
-            titleLabel.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
-            errorLabel = new Label();
-            errorLabel.setStyle("-fx-text-fill: red;");
+        // Set up the login form
+        titleLabel = new Label("Login Page");
+        titleLabel.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
+        errorLabel = new Label();
+        errorLabel.setStyle("-fx-text-fill: red;");
 
-            usernameField = new TextField();
-            usernameField.setPromptText("Username");
-            passwordField = new PasswordField();
-            passwordField.setPromptText("Password");
+        usernameField = new TextField();
+        usernameField.setPromptText("Username");
+        passwordField = new PasswordField();
+        passwordField.setPromptText("Password");
 
-            loginButton = new Button("Login");
-            loginButton.setOnAction(event -> handleLoginButtonAction(stage,scene1));
+        loginButton = new Button("Login");
+        loginButton.setOnAction(event -> handleLoginButtonAction(stage, scene1));
 
-            // Set up the GridPane layout for the login form
-            GridPane gridPane = new GridPane();
-            gridPane.setAlignment(Pos.CENTER);
-            gridPane.setHgap(10);
-            gridPane.setVgap(10);
-            gridPane.setPadding(new Insets(25, 25, 25, 25));
-            gridPane.add(titleLabel, 0, 0, 2, 1);
-            gridPane.add(usernameField, 0, 1);
-            gridPane.add(passwordField, 0, 2);
-            gridPane.add(loginButton, 0, 3);
-            gridPane.add(errorLabel, 0, 4);
+        // Set up the GridPane layout for the login form
+        GridPane gridPane = new GridPane();
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+        gridPane.setPadding(new Insets(25, 25, 25, 25));
+        gridPane.add(titleLabel, 0, 0, 2, 1);
+        gridPane.add(usernameField, 0, 1);
+        gridPane.add(passwordField, 0, 2);
+        gridPane.add(loginButton, 0, 3);
+        gridPane.add(errorLabel, 0, 4);
 
-            // Create the Scene and set it to the Stage
-            Scene scene = new Scene(gridPane, 400, 250);
-            stage.setTitle("Login");
-            stage.setScene(scene);
-            stage.show();
+        // Create the Scene and set it to the Stage
+        Scene scene = new Scene(gridPane, 400, 250);
+        stage.setTitle("Login");
+        stage.setScene(scene);
+        stage.show();
     }
 
-    void handleLoginButtonAction(Stage stage , Scene scene) {
+    void handleLoginButtonAction(Stage stage, Scene scene) {
         stage.setScene(scene);
         stage.show();
     }
