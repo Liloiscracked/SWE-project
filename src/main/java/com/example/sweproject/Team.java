@@ -22,9 +22,14 @@ public class Team {
 
     public void setpoint(int point) {
         this.Point = point;
-    
+
     }
-    public void addtournment(Tournament tournament){
-        this.tournament=tournament;
+
+    public void addtournment(Tournament tournament) {
+        this.tournament = tournament;
+        for (int k = 0; k < members.size(); k++) {
+            members.get(k).setTournament(tournament);
+        }
+
     }
 }

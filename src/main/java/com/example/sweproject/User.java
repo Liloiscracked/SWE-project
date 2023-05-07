@@ -38,12 +38,13 @@ public class User {
         return tournament;
     }
 
-    public void setTournament(LinkedList<Tournament> tournament) {
-        this.tournament = tournament;
+    public void setTournament(Tournament tournament) {
+        this.tournament.add(tournament);
     }
 
     public void showuser(User user) {
         System.out.println("the ID " + user.getID());
         System.out.println("the name " + user.getName());
+        System.out.println("the tournments " + user.getTournament().toString());
     }
 }
