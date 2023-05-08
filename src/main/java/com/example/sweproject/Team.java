@@ -3,12 +3,14 @@ package com.example.sweproject;
 import java.util.LinkedList;
 
 public class Team {
+    String name;
     LinkedList<User> members;
     int Point;
     Tournament tournament;
 
-    public Team(LinkedList<User> members) {
+    public Team(LinkedList<User> members, String name) {
         this.members = members;
+        this.name = name;
         this.Point = 0;
     }
 
@@ -31,5 +33,10 @@ public class Team {
             members.get(k).setTournament(tournament);
         }
 
+    }
+
+    public String toString() {
+        // TODO Auto-generated method stub
+        return this.name;
     }
 }

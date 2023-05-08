@@ -13,8 +13,9 @@ public class Admin {
         this.ID = (int) Math.random() * 100000;
     }
 
-    public void registerStudent(String Name, int id, LinkedList<Tournament> tournament) {
-        User user = new User(name, id, tournament);
+    public void registerStudent(String Name, int id, Tournament tournament) {
+        User user = new User(name, id);
+        user.addtournment(tournament);
         users.add(user);
 
     }

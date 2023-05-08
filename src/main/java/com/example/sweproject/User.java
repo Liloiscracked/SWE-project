@@ -8,14 +8,17 @@ public class User {
 
     LinkedList<Tournament> tournament;
 
-    public User(String name, int ID, LinkedList<Tournament> tournament) {
+    public User(String name, int ID) {
         this.name = name;
         this.ID = ID;
-        this.tournament = tournament;
     }
 
     public boolean isValid(Tournament t) {
         return !tournament.contains(t);
+    }
+
+    public void addtournment(Tournament t) {
+        this.tournament.add(t);
     }
 
     public void setName(String name) {
