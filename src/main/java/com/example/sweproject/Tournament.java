@@ -119,22 +119,3 @@ public class Tournament {
     }
 
 }
-
-class test {
-    public static void main(String[] args) {
-        User u1 = new User("momo", 000);
-        User u2 = new User("momom", 0000);
-        LinkedList<User> members = new LinkedList<>();
-        LinkedList<User> members2 = new LinkedList<>();
-        members.add(0, u2);
-        members2.add(0, u1);
-        Team team1 = new Team(members, "team1");
-        Team team2 = new Team(members2, "team2");
-        LinkedList<Team> teams = new LinkedList<>();
-        teams.add(team2);
-        teams.add(team1);
-        Games foot = new Games("football");
-        Tournament t = new Tournament(teams, foot, "elimination");
-        t.showMatch();
-    }
-}
