@@ -6,7 +6,13 @@ public class Games {
     public Games(String game) {
         this.game = game;
     }
-    public String addGame(){
+
+    public String addGame() {
         return this.game;
+    }
+
+    public String toString() {
+        // TODO Auto-generated method stub
+        return super.toString() + game;
     }
 }

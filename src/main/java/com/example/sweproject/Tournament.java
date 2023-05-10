@@ -5,17 +5,21 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+
 public class Tournament {
+    private String name;
+    
 
     private String type;
     private LinkedList<Team> teams;
     private LinkedList<Match> matches;
     private Games game;
 
-    public Tournament(LinkedList<Team> teams, Games game, String type) {
+    public Tournament(LinkedList<Team> teams, Games game, String type,String name) {
         this.teams = teams;
         this.game = game;
         this.type = type;
+        this.name=name;
         this.matches = new LinkedList<>();
         if (this.type.equals("elimination")) {
             if (teams.size() % 2 == 0) {
@@ -36,6 +40,13 @@ public class Tournament {
             }
         }
 
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getType() {
@@ -116,6 +127,9 @@ public class Tournament {
         } else if (choice == 4) {
             this.setGame(game);
         }
+    }
+    public void addteam(Team team){
+        this.teams.add(team);
     }
 
 }

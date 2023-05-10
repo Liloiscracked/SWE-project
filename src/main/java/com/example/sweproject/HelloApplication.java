@@ -19,9 +19,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class HelloApplication extends Application {
-
+    static Admin admin = new Admin("mohammed");
     BorderPane rootLayout;
-    Stage stage;
+    static Stage stage;
 
     public void start(Stage stage) throws IOException {
 
@@ -59,7 +59,6 @@ public class HelloApplication extends Application {
         passwordField.setPromptText("Password");
 
         loginButton = new Button("Login");
-        loginButton.setOnAction(event -> handleLoginButtonAction(stage, scene1));
 
         // Set up the GridPane layout for the login form
         GridPane gridPane = new GridPane();
@@ -75,6 +74,14 @@ public class HelloApplication extends Application {
 
         // Create the Scene and set it to the Stage
         Scene scene = new Scene(gridPane, 400, 250);
+        try {
+            HelloApplication.stage = stage;
+            Parent mainRoot = FXMLLoader.load(getClass().getResource("mainmenue.fxml"));
+            Scene scene3 = new Scene(mainRoot);
+            loginButton.setOnAction(event -> handleLoginButtonAction(stage, scene3));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         stage.setTitle("Login");
         stage.setScene(scene);

@@ -7,6 +7,7 @@ public class Admin {
     String name;
     int ID;
     ArrayList<User> users;
+    ArrayList<Tournament> tournments;
 
     public Admin(String name) {
         this.name = name;
@@ -18,5 +19,13 @@ public class Admin {
         user.addtournment(tournament);
         users.add(user);
 
+    }
+
+    public void createtournment(LinkedList<Team> teams, Games game, String type, String name) {
+        tournments.add(new Tournament(teams, game, type, name));
+    }
+
+    public void removetournment(Tournament t) {
+        tournments.remove(t);
     }
 }
