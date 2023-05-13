@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import javafx.scene.control.Button;
 
-
 public class Tournament {
     private String name;
     private String type;
@@ -15,15 +14,23 @@ public class Tournament {
     private Games game;
     private transient Button registerButton;
     private transient Button withdrawButton;
+    private transient Button Showmatch;
+    private transient Button showtable;
 
-    public Tournament(LinkedList<Team> teams, Games game, String type,String name) {
+    public Tournament() {
+
+    }
+
+    public Tournament(LinkedList<Team> teams, Games game, String type, String name) {
         this.teams = teams;
         this.game = game;
         this.type = type;
         this.name = name;
         this.matches = new LinkedList<>();
-        this.registerButton= new Button("Register");
-        this.withdrawButton= new Button("Withdraw");
+        this.registerButton = new Button("Register");
+        this.withdrawButton = new Button("Withdraw");
+        this.Showmatch = new Button("Showmatch");
+        this.showtable = new Button("showtable");
         if (this.type.equals("elimination")) {
             if (teams.size() % 2 == 0) {
                 for (int i = 0; i < teams.size() - 1; i = i + 2) {
@@ -44,6 +51,7 @@ public class Tournament {
         }
 
     }
+
     public String getName() {
         return name;
     }
@@ -83,6 +91,7 @@ public class Tournament {
     public String getGameName() {
         return game.toString();
     }
+
     public void setGame(Games game) {
         this.game = game;
     }
@@ -134,16 +143,49 @@ public class Tournament {
             this.setGame(game);
         }
     }
-    public void addTeam(Team team){
+
+    public void addTeam(Team team) {
         this.teams.add(team);
+        if (teams.size() >= 2) {
+            if (this.type.equals("elimination")) {
+                if (teams.size() % 2 == 0) {
+                    for (int i = 0; i < teams.size() - 1; i = i + 2) {
+                        matches.add(new Match(LocalDate.now(), teams.get(i), teams.get(i + 1)));
+                    }
+                } else {
+                    for (int i = 0; i < teams.size() - 2; i = i + 2) { // add all teams except the last team
+                        matches.add(new Match(LocalDate.now(), teams.get(i), teams.get(i + 1)));
+                        Collections.shuffle(matches);
+                    }
+                }
+            } else {
+                for (int j = 0; j < teams.size() - 1; j++) {
+                    for (int q = j + 1; q < teams.size(); q++)
+                        matches.add(new Match(LocalDate.now(), teams.get(j), teams.get(q)));
+                    Collections.shuffle(matches);
+                }
+            }
+        }
     }
-    public void removeTeam(Team team){
+
+    public void removeTeam(Team team) {
         this.teams.remove(team);
     }
-    public Button getTeam(){
+
+    public Button getTeam() {
         return registerButton;
     }
-    public Button getWithdraw(){
+
+    public Button getWithdraw() {
         return withdrawButton;
     }
+
+    public Button getShowmatch() {
+        return Showmatch;
+    }
+
+    public Button getShowtable() {
+        return showtable;
+    }
+
 }
