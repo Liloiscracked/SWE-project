@@ -13,9 +13,22 @@ public class Team {
         this.name = name;
         this.Point = 0;
     }
+    public User getUser(){
+        return members.getFirst();
+    }
+    public boolean hasMember(User member){
+        boolean equal= false;
+        for (User user : members) {
+            if(user.equal(member)){
+                equal= true;
+                break;
+            }
+        }
+        return equal;
+    }
 
     public void addMember(User member) {
-        members.add(member);
+        members.addLast(member);
     }
 
     public void removeMember(User member) {

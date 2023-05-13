@@ -1,6 +1,7 @@
 package com.example.sweproject;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 public class User {
     private String name;
@@ -8,9 +9,17 @@ public class User {
 
     LinkedList<Tournament> tournament;
 
+    public User(String name) {
+        this.name = name;
+        this.ID = new Random().nextInt(200000000,999999999);
+    }
+
     public User(String name, int ID) {
         this.name = name;
         this.ID = ID;
+    }
+    public boolean equal(User user){
+        return name.equals(user.name);
     }
 
     public boolean isValid(Tournament t) {

@@ -4,23 +4,26 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Scanner;
+import javafx.scene.control.Button;
 
 
 public class Tournament {
     private String name;
-    
-
     private String type;
     private LinkedList<Team> teams;
     private LinkedList<Match> matches;
     private Games game;
+    private transient Button registerButton;
+    private transient Button withdrawButton;
 
     public Tournament(LinkedList<Team> teams, Games game, String type,String name) {
         this.teams = teams;
         this.game = game;
         this.type = type;
-        this.name=name;
+        this.name = name;
         this.matches = new LinkedList<>();
+        this.registerButton= new Button("Register");
+        this.withdrawButton= new Button("Withdraw");
         if (this.type.equals("elimination")) {
             if (teams.size() % 2 == 0) {
                 for (int i = 0; i < teams.size() - 1; i = i + 2) {
@@ -77,6 +80,9 @@ public class Tournament {
         return game;
     }
 
+    public String getGameName() {
+        return game.toString();
+    }
     public void setGame(Games game) {
         this.game = game;
     }
@@ -104,7 +110,7 @@ public class Tournament {
                 System.out.println("Team is not found");
             }
         } else {
-            System.out.println("this method is not for elimination tournament");
+            System.out.println("This method is not for elimination tournament");
         }
 
     }
@@ -112,7 +118,7 @@ public class Tournament {
     public void Modifydataoftournament(String type, Team team, Games game, int choice) {
         if (choice == 1) {
             Scanner input = new Scanner(System.in);
-            System.out.println("Inter the new points");
+            System.out.println("Enter the new points");
             int point = input.nextInt();
             this.updateTablepoint(team, point);
         } else if (choice == 2) {
@@ -128,8 +134,16 @@ public class Tournament {
             this.setGame(game);
         }
     }
-    public void addteam(Team team){
+    public void addTeam(Team team){
         this.teams.add(team);
     }
-
+    public void removeTeam(Team team){
+        this.teams.remove(team);
+    }
+    public Button getTeam(){
+        return registerButton;
+    }
+    public Button getWithdraw(){
+        return withdrawButton;
+    }
 }

@@ -13,6 +13,6 @@ public class Games {
 
     public String toString() {
         // TODO Auto-generated method stub
-        return super.toString() + game;
+        return game;
     }
 }
